@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://crmh73ubx6x35"]
+
+[ext_resource type="PackedScene" uid="uid://g6u6hsxfj5qs" path="res://textures/ratmunk.ase" id="1_6wkf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jqgh"]
+size = Vector2(9, 13)
+
+[node name="Ratmunk" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_4jqgh")
+
+[node name="Sprite" parent="." instance=ExtResource("1_6wkf3")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
