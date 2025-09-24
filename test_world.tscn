@@ -1,20 +1,25 @@
-[gd_scene load_steps=5 format=4 uid="uid://db3vsd3w3a7vh"]
+[gd_scene load_steps=6 format=4 uid="uid://db3vsd3w3a7vh"]
 
 [ext_resource type="PackedScene" uid="uid://crmh73ubx6x35" path="res://ratmunk.tscn" id="1_dxppu"]
+[ext_resource type="Script" uid="uid://djwm852ei01js" path="res://ratmunk.gd" id="2_1lwx6"]
 [ext_resource type="Texture2D" uid="uid://cvs8nww3q7uux" path="res://textures/tileset.ase" id="2_gy3sr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1lwx6"]
 texture = ExtResource("2_gy3sr")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
 [sub_resource type="TileSet" id="TileSet_dsnr4"]
 tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1lwx6")
 
 [node name="TestWorld" type="Node2D"]
 
 [node name="Ratmunk" parent="." instance=ExtResource("1_dxppu")]
+position = Vector2(1, -19)
+script = ExtResource("2_1lwx6")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD3/wEAAAAAAAAAAAD4/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAARAAEAAAAAAAAAAAASAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAVAAEAAAAAAAAAAAD2/wEAAAAAAAAAAAD1/wEAAAAAAAAAAAD0/wEAAAAAAAAAAAA=")
