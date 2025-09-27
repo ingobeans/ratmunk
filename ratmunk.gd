@@ -23,6 +23,8 @@ func _physics_process(delta):
 	var on_floor = is_on_floor()
 	if on_floor:
 		velocity.x = lerp(velocity.x,0.0,friction)
+	else:
+		velocity.x = lerp(velocity.x,0.0,friction/3.0)
 
 	move_and_slide()
 	

@@ -14,4 +14,5 @@ shape = SubResource("RectangleShape2D_4jqgh")
 [node name="Sprite" parent="." instance=ExtResource("1_6wkf3")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -28)
 zoom = Vector2(2, 2)
