@@ -19,17 +19,17 @@ shape = SubResource("RectangleShape2D_4jqgh")
 position = Vector2(0, -28)
 zoom = Vector2(2, 2)
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="Camera2D"]
 offset_left = -185.0
-offset_top = -130.0
+offset_top = -102.0
 offset_right = -111.0
-offset_bottom = -116.0
+offset_bottom = -88.0
 color = Color(0, 0, 0, 1)
 
-[node name="Filled" type="ColorRect" parent="."]
+[node name="Filled" type="ColorRect" parent="Camera2D"]
 offset_left = -184.0
-offset_top = -129.0
+offset_top = -101.0
 offset_right = -112.0
-offset_bottom = -117.0
+offset_bottom = -89.0
 color = Color(0.07450981, 0.6156863, 0.03137255, 1)
 script = ExtResource("2_npobg")
