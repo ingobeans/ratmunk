@@ -23,19 +23,25 @@ func _physics_process(delta):
 	last_jump -= delta
 	if on_floor and last_jump <= 0:
 		velocity.y = jump_speed
-		var dir = 1
 	
+		var dir = 0
 		if player.position.x < position.x:
 			$Sprite.flip_h = true
 			dir = -1
 		else:
 			$Sprite.flip_h = false
+			dir = 1
 		velocity.x = speed * dir
 		last_jump = 1.1
 	
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Ratmunk" and last_damage_frame <= 0.0:
-		body.health -= 10.0
-		last_damage_frame = 1.0
+	if body == player:
+		# determine whether player is above us, and enemy should be destroyed,
+		# or if player should be damaged
+		if player.position.y < position.y:
+			self.queue_free()
+		elif last_damage_frame <= 0.0:
+			player.health -= 10.0
+			last_damage_frame = 1.0
