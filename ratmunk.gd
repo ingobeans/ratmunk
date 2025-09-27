@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@export var speed = 60
-@export var friction = 0.3
-@export var max_speed = 200
-@export var jump_speed = -100
-@export var gravity = 400
-@export var max_jump_frames = 10
+var speed = 60
+var friction = 0.3
+var max_speed = 200
+var jump_speed = -100
+var gravity = 400
+var max_jump_frames = 10
 
 var health = 100.0
 
