@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# general
+# general enemy script
 
 var friction = 0.3
 var gravity = 400
@@ -27,7 +27,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player:
 		# determine whether player is above us, and enemy should be destroyed,
 		# or if player should be damaged
-		if player.position.y < position.y:
+		if player.position.y < position.y and player.velocity.y > 0:
 			self.queue_free()
 		elif last_damage_frame <= 0.0:
 			player.health -= 10.0
