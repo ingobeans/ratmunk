@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://crmh73ubx6x35"]
+[gd_scene load_steps=4 format=3 uid="uid://crmh73ubx6x35"]
 
 [ext_resource type="PackedScene" uid="uid://g6u6hsxfj5qs" path="res://textures/ratmunk.ase" id="1_6wkf3"]
+[ext_resource type="Script" uid="uid://cqp8g263nbyy5" path="res://healthbar.gd" id="2_npobg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jqgh"]
 size = Vector2(9, 13)
@@ -16,3 +17,18 @@ shape = SubResource("RectangleShape2D_4jqgh")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -28)
 zoom = Vector2(2, 2)
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -185.0
+offset_top = -130.0
+offset_right = -111.0
+offset_bottom = -116.0
+color = Color(0, 0, 0, 1)
+
+[node name="Filled" type="ColorRect" parent="."]
+offset_left = -184.0
+offset_top = -129.0
+offset_right = -112.0
+offset_bottom = -117.0
+color = Color(0.07450981, 0.6156863, 0.03137255, 1)
+script = ExtResource("2_npobg")

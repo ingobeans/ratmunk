@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var gravity = 400
 @export var max_jump_frames = 10
 
+var health = 100.0
+
 var jump_frames = 0
 
 func _physics_process(delta):
