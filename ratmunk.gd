@@ -12,9 +12,15 @@ var health = 100.0
 var jump_frames = 0
 
 func _physics_process(delta):
+	var on_floor = is_on_floor()
 	velocity.y += gravity * delta
 	
-	velocity.x += Input.get_axis("walk_left", "walk_right") * speed
+	var move_force = Input.get_axis("walk_left", "walk_right") * speed
+	
+	if !on_floor:
+		move_force /= 3.0
+	
+	velocity.x += move_force
 	if velocity.x > 0:
 		velocity.x = min(velocity.x, max_speed)
 		$Sprite.flip_h = false
@@ -22,7 +28,6 @@ func _physics_process(delta):
 		$Sprite.flip_h = true
 		velocity.x = max(velocity.x, -max_speed)
 	
-	var on_floor = is_on_floor()
 	if on_floor:
 		velocity.x = lerp(velocity.x,0.0,friction)
 	else:
