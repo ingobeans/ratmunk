@@ -39,7 +39,7 @@ texture = ExtResource("3_umiqe")
 light_mask = 2
 sprite_frames = ExtResource("5_pwin6")
 autoplay = "walk"
-frame_progress = 0.37989274
+frame_progress = 0.99923193
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -28)

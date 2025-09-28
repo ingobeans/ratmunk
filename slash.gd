@@ -4,6 +4,7 @@ extends Node2D
 var direction: Vector2
 var drag = 4.55
 var speed = 220
+var damage = 10.0
 
 func _ready() -> void:
 	$Sprite.rotation = atan2(direction.y,direction.x)
@@ -15,4 +16,6 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	body.queue_free()
+	body.health -= damage
+	body.active_stun = body.stun_time
+	body.velocity += (self.direction + Vector2(0.0,-0.5)) * 100.0

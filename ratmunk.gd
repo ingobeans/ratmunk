@@ -21,6 +21,8 @@ var attack_delay = 0.45
 @onready var poof = preload("res://poof.tscn").instantiate()
 
 func _process(delta: float):
+	var on_floor = is_on_floor()
+	
 	# attacking
 	last_attack -= delta
 	if Input.is_action_just_pressed("attack") and last_attack <= 0.0:
@@ -42,14 +44,13 @@ func _process(delta: float):
 		child.speed += 0.5 * child.drag * max(child.direction.dot(velocity),0.0);
 		add_sibling(child)
 	
-	if abs(velocity.x) > 2.5:
+	if abs(velocity.x) > 2.5 and on_floor:
 		$Sprites/Legs.animation = "walk"
 	else:
 		$Sprites/Legs.animation = "default"
 		
 	
 	# jumping
-	var on_floor = is_on_floor()
 	if on_floor:
 		jump_frames = 0
 		double_jump = true
