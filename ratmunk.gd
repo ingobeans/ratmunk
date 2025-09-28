@@ -18,6 +18,7 @@ var last_attack = 0.0
 var attack_delay = 0.45
 
 @onready var slash = preload("res://slash.tscn").instantiate()
+@onready var poof = preload("res://poof.tscn").instantiate()
 
 func _process(delta: float):
 	# attacking
@@ -29,7 +30,7 @@ func _process(delta: float):
 		
 		var vertical = Input.get_axis("up", "down")
 		
-		var move_dir = Vector2(-1.0 if $Sprite.flip_h else 1.0,0.0)
+		var move_dir = Vector2($Sprites.scale.x,0.0)
 		if vertical != 0.0:
 			move_dir = Vector2(0.0,vertical)
 		
@@ -40,6 +41,12 @@ func _process(delta: float):
 		# it travels faster
 		child.speed += 0.5 * child.drag * max(child.direction.dot(velocity),0.0);
 		add_sibling(child)
+	
+	if abs(velocity.x) > 2.5:
+		$Sprites/Legs.animation = "walk"
+	else:
+		$Sprites/Legs.animation = "default"
+		
 	
 	# jumping
 	var on_floor = is_on_floor()
@@ -60,9 +67,11 @@ func _process(delta: float):
 			
 			velocity.y = single_jump_force*1.5
 			double_jump = false
+			
+			var child = poof.duplicate()
+			child.position = position
+			add_sibling(child)
 	else:
-		if jump_frames != 0 and jump_frames < 0:
-			velocity.y = max(velocity.y,10*gravity)
 		jump_frames = 0
 	
 	
@@ -79,9 +88,9 @@ func _physics_process(delta):
 	velocity.x += move_force
 	if velocity.x > 0:
 		velocity.x = min(velocity.x, max_speed)
-		$Sprite.flip_h = false
+		$Sprites.scale.x = 1.0
 	elif velocity.x < 0:
-		$Sprite.flip_h = true
+		$Sprites.scale.x = -1.0
 		velocity.x = max(velocity.x, -max_speed)
 	
 	if on_floor:

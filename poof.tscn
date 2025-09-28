@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk56vcelp20b4"]
+
+[ext_resource type="Texture2D" uid="uid://c3yscpa2lq6xo" path="res://textures/poof.png" id="1_k8ti2"]
+[ext_resource type="Script" uid="uid://dvf7fsbq0mwoi" path="res://poof.gd" id="2_kdo6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ayfe"]
+atlas = ExtResource("1_k8ti2")
+region = Rect2(10, 9, 5, 3)
+margin = Rect2(4, 8, 11, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1wvs"]
+atlas = ExtResource("1_k8ti2")
+region = Rect2(0, 9, 10, 6)
+margin = Rect2(2, 7, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsbax"]
+atlas = ExtResource("1_k8ti2")
+region = Rect2(0, 0, 13, 9)
+margin = Rect2(1, 6, 3, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8evvt"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_4ayfe")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_b1wvs")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_hsbax")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Poof" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8evvt")
+autoplay = "default"
+script = ExtResource("2_kdo6h")

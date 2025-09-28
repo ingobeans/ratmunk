@@ -1,0 +1,25 @@
+[remap]
+
+importer="Aseprite AnimatedSprite2D Import"
+type="PackedScene"
+uid="uid://dhkc5r0pfx32x"
+path="res://.godot/imported/legs.ase-5fd3e718e7681dd36b7ed5aa85cff333.scn"
+
+[deps]
+
+source_file="res://textures/legs.ase"
+dest_files=["res://.godot/imported/legs.ase-5fd3e718e7681dd36b7ed5aa85cff333.scn"]
+
+[params]
+
+spritesheet/layout=0
+spritesheet/fixed_rows_count=1
+spritesheet/fixed_columns_count=1
+spritesheet/border_type=0
+spritesheet/trim=false
+spritesheet/ignore_empty=false
+spritesheet/merge_duplicates=false
+animation/default/name="default"
+animation/default/direction=0
+animation/default/repeat_count=0
+animation/autoplay=""
