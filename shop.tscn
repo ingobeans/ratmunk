@@ -11,6 +11,7 @@
 position = Vector2(-42, 21)
 scale = Vector2(2.1102107, 2.1102107)
 color = Color(0.88271093, 0.67361844, 3.85046e-07, 1)
+energy = 1.62
 texture = ExtResource("2_e7rdd")
 
 [node name="shop" parent="." instance=ExtResource("1_viryw")]
