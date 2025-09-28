@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var speed = 60/(1.0/60.0)
+var speed = 3000
 var friction = 0.3
-var max_speed = 200
+var max_speed = 150
 var gravity = 400
 
 var single_jump_force = -100
@@ -14,22 +14,30 @@ var health = 100.0
 var max_jump_frames = 0.25
 var jump_frames = 0.0
 
+var last_attack = 0.0
+var attack_delay = 0.45
+
 @onready var slash = preload("res://slash.tscn").instantiate()
 
 func _process(delta: float):
 	# attacking
-	if Input.is_action_just_pressed("attack"):
+	last_attack -= delta
+	if Input.is_action_just_pressed("attack") and last_attack <= 0.0:
+		last_attack = attack_delay
 		var child = slash.duplicate()
 		child.position = position
 		
 		var vertical = Input.get_axis("up", "down")
-		var move_dir = Vector2(-1.0 if $Sprite.flip_h else 1.0,0.0)
 		
+		var move_dir = Vector2(-1.0 if $Sprite.flip_h else 1.0,0.0)
 		if vertical != 0.0:
 			move_dir = Vector2(0.0,vertical)
 		
 		child.direction = move_dir
 		
+		# speed up the slash projectile based on players velocity
+		# such that if player moves in the same direction as the new slash,
+		# it travels faster
 		child.speed += 0.5 * child.drag * max(child.direction.dot(velocity),0.0);
 		add_sibling(child)
 	
@@ -66,7 +74,7 @@ func _physics_process(delta):
 	var move_force = Input.get_axis("left", "right") * speed * delta
 	
 	if !on_floor:
-		move_force /= 3.0
+		move_force /= 4.0
 	
 	velocity.x += move_force
 	if velocity.x > 0:
