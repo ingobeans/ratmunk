@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://5i1qg4eckmcd"]
+
+[ext_resource type="Script" uid="uid://351up0ws6p2" path="res://door.gd" id="1_ba8gm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba8gm"]
+size = Vector2(20, 32)
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_ba8gm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ba8gm")
+
+[node name="Tooltip" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Tooltip"]
+offset_left = -36.0
+offset_top = -31.0
+offset_right = 37.0
+offset_bottom = -19.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Tooltip"]
+offset_left = -16.999996
+offset_top = -29.999998
+offset_right = 276.0
+offset_bottom = 69.0
+scale = Vector2(0.09742257, 0.09742257)
+theme_override_font_sizes/font_size = 72
+text = "🠉 Enter"

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dfbmtng0mpli2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -121.0
+offset_top = -43.0
+offset_right = 845.0
+offset_bottom = 462.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 129.0
+offset_top = 50.0
+offset_right = 1046.0
+offset_bottom = 150.0
+scale = Vector2(0.54560894, 0.54560894)
+theme_override_font_sizes/font_size = 72
+text = "Ratmunk Demo Complete!"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 222.0
+offset_top = 107.000015
+offset_right = 802.0
+offset_bottom = 207.00002
+scale = Vector2(0.3040673, 0.3040673)
+theme_override_font_sizes/font_size = 72
+text = "thanks for playing <3
+
+
+will expand on this over
+the coming weeks :3"

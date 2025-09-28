@@ -15,7 +15,7 @@ var max_jump_frames = 0.25
 var jump_frames = 0.0
 
 var last_attack = 0.0
-var attack_delay = 0.45
+var attack_delay = 0.35
 
 @onready var slash = preload("res://slash.tscn").instantiate()
 @onready var poof = preload("res://poof.tscn").instantiate()
