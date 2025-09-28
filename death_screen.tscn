@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck62luhsdbgsn"]
+
+[ext_resource type="Script" uid="uid://b8q5oty2vegiq" path="res://death_screen.gd" id="1_ex68u"]
+[ext_resource type="Texture2D" uid="uid://i7psgv324v3o" path="res://textures/arrow.png" id="1_if853"]
+
+[node name="DeathScreen" type="Node2D"]
+script = ExtResource("1_ex68u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 1000
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -121.0
+offset_top = -43.0
+offset_right = 845.0
+offset_bottom = 462.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 287.0
+offset_top = 55.000004
+offset_right = 604.0769
+offset_bottom = 155.0
+scale = Vector2(0.54560894, 0.54560894)
+theme_override_font_sizes/font_size = 72
+text = "You Died"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 251.00002
+offset_top = 108.00001
+offset_right = 1076.0
+offset_bottom = 208.0
+scale = Vector2(0.3040673, 0.3040673)
+theme_override_font_sizes/font_size = 72
+text = "ratmunk was destroyed"
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 341.00003
+offset_top = 209.0
+offset_right = 1166.0
+offset_bottom = 309.0
+scale = Vector2(0.3040673, 0.3040673)
+theme_override_font_sizes/font_size = 72
+text = "Retry"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 314.0
+offset_top = 212.99998
+offset_right = 322.0
+offset_bottom = 220.99998
+scale = Vector2(3.070819, 3.070819)
+texture = ExtResource("1_if853")
+expand_mode = 1

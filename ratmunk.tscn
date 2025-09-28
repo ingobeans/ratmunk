@@ -35,13 +35,13 @@ shape = SubResource("RectangleShape2D_4jqgh")
 light_mask = 2
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.68654794
+frame_progress = 0.12485448
 
 [node name="Legs" parent="Sprites" instance=ExtResource("4_pwin6")]
 light_mask = 2
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.630998
+frame_progress = 0.12485448
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -28)

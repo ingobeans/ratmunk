@@ -19,8 +19,14 @@ var attack_delay = 0.35
 
 @onready var slash = preload("res://slash.tscn").instantiate()
 @onready var poof = preload("res://poof.tscn").instantiate()
+@onready var death_screen = preload("res://death_screen.tscn").instantiate()
 
 func _process(delta: float):
+	if health <= 0.0:
+		for n in get_parent().get_children():
+			n.queue_free()
+		add_sibling(death_screen)
+		
 	var on_floor = is_on_floor()
 	
 	# attacking
@@ -50,7 +56,6 @@ func _process(delta: float):
 		$Sprites/Legs.animation = "idle"
 		
 	$Sprites/Torso.animation = "idle" if on_floor else "jumping"
-		
 	
 	# jumping
 	if on_floor:
