@@ -14,7 +14,26 @@ var health = 100.0
 var max_jump_frames = 0.25
 var jump_frames = 0.0
 
+@onready var slash = preload("res://slash.tscn").instantiate()
+
 func _process(delta: float):
+	# attacking
+	if Input.is_action_just_pressed("attack"):
+		var child = slash.duplicate()
+		child.position = position
+		
+		var vertical = Input.get_axis("up", "down")
+		var move_dir = Vector2(-1.0 if $Sprite.flip_h else 1.0,0.0)
+		
+		if vertical != 0.0:
+			move_dir = Vector2(0.0,vertical)
+		
+		child.direction = move_dir
+		
+		child.speed += 0.5 * child.drag * max(child.direction.dot(velocity),0.0);
+		add_sibling(child)
+	
+	# jumping
 	var on_floor = is_on_floor()
 	if on_floor:
 		jump_frames = 0
@@ -44,7 +63,7 @@ func _physics_process(delta):
 	var on_floor = is_on_floor()
 	velocity.y += gravity * delta
 	
-	var move_force = Input.get_axis("walk_left", "walk_right") * speed * delta
+	var move_force = Input.get_axis("left", "right") * speed * delta
 	
 	if !on_floor:
 		move_force /= 3.0

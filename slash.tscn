@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq6ak3bvwb5hn"]
+
+[ext_resource type="Texture2D" uid="uid://4q02nit1f2dj" path="res://textures/slash.ase" id="1_bf50k"]
+[ext_resource type="Script" uid="uid://b1v1t6x5lj22i" path="res://slash.gd" id="1_tocf0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf50k"]
+size = Vector2(6, 16)
+
+[node name="Slash" type="Node2D"]
+script = ExtResource("1_tocf0")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_bf50k")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_bf50k")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
