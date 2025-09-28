@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://db3vsd3w3a7vh"]
+[gd_scene load_steps=6 format=4 uid="uid://db3vsd3w3a7vh"]
 
 [ext_resource type="PackedScene" uid="uid://crmh73ubx6x35" path="res://ratmunk.tscn" id="1_dxppu"]
-[ext_resource type="Script" uid="uid://djwm852ei01js" path="res://ratmunk.gd" id="2_1lwx6"]
 [ext_resource type="Texture2D" uid="uid://cvs8nww3q7uux" path="res://textures/tileset.ase" id="2_gy3sr"]
 [ext_resource type="PackedScene" uid="uid://cah7gxr74s567" path="res://frog.tscn" id="4_dsnr4"]
 
@@ -1088,8 +1087,11 @@ tile_map_data = PackedByteArray("AAD3/wEAAAADAAAAAAD4/wEAAAADAAAAAAD5/wEAAAADAAA
 tile_set = SubResource("TileSet_dsnr4")
 
 [node name="Ratmunk" parent="." instance=ExtResource("1_dxppu")]
-position = Vector2(-7, 0)
-script = ExtResource("2_1lwx6")
 
 [node name="Frog" parent="." instance=ExtResource("4_dsnr4")]
 position = Vector2(108, 0)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.85637665, 0.2840062, 1)
+energy = 0.69
+blend_mode = 1

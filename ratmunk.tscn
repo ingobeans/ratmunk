@@ -1,19 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://crmh73ubx6x35"]
+[gd_scene load_steps=8 format=3 uid="uid://crmh73ubx6x35"]
 
 [ext_resource type="PackedScene" uid="uid://g6u6hsxfj5qs" path="res://textures/ratmunk.ase" id="1_6wkf3"]
+[ext_resource type="Script" uid="uid://djwm852ei01js" path="res://ratmunk.gd" id="1_07v26"]
 [ext_resource type="Script" uid="uid://cqp8g263nbyy5" path="res://healthbar.gd" id="2_npobg"]
+[ext_resource type="Texture2D" uid="uid://bb7w3nb2ghbuq" path="res://light_texture.tres" id="3_3e4aq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jqgh"]
-size = Vector2(9, 13)
+size = Vector2(7, 13)
+
+[sub_resource type="Gradient" id="Gradient_3e4aq"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_07v26"]
+gradient = SubResource("Gradient_3e4aq")
 
 [node name="Ratmunk" type="CharacterBody2D"]
 collision_layer = 2
+script = ExtResource("1_07v26")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(4.5933423, 4.5933423)
+texture = ExtResource("3_3e4aq")
+
+[node name="LightThatOnlyAffectsPlayerToCounteractTheDirectionalLightInWorld" type="PointLight2D" parent="."]
+scale = Vector2(4.5933423, 4.5933423)
+color = Color(1, 0.85490197, 0.28235295, 1)
+energy = 0.69
+range_item_cull_mask = 2
+texture = ExtResource("3_3e4aq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_4jqgh")
 
 [node name="Sprite" parent="." instance=ExtResource("1_6wkf3")]
+light_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -28)
@@ -33,3 +53,9 @@ offset_right = -112.0
 offset_bottom = -89.0
 color = Color(0.07450981, 0.6156863, 0.03137255, 1)
 script = ExtResource("2_npobg")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_07v26")
