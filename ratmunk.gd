@@ -47,7 +47,9 @@ func _process(delta: float):
 	if abs(velocity.x) > 2.5 and on_floor:
 		$Sprites/Legs.animation = "walk"
 	else:
-		$Sprites/Legs.animation = "default"
+		$Sprites/Legs.animation = "idle"
+		
+	$Sprites/Torso.animation = "idle" if on_floor else "jumping"
 		
 	
 	# jumping

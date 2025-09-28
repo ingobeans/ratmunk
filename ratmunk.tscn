@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://crmh73ubx6x35"]
+[gd_scene load_steps=7 format=3 uid="uid://crmh73ubx6x35"]
 
 [ext_resource type="Script" uid="uid://djwm852ei01js" path="res://ratmunk.gd" id="1_07v26"]
 [ext_resource type="Script" uid="uid://cqp8g263nbyy5" path="res://healthbar.gd" id="2_npobg"]
 [ext_resource type="Texture2D" uid="uid://bb7w3nb2ghbuq" path="res://light_texture.tres" id="3_3e4aq"]
-[ext_resource type="Texture2D" uid="uid://bcu5t2ivmrmtf" path="res://textures/torso.ase" id="3_umiqe"]
+[ext_resource type="PackedScene" uid="uid://bcu5t2ivmrmtf" path="res://textures/torso.ase" id="3_umiqe"]
 [ext_resource type="PackedScene" uid="uid://dhkc5r0pfx32x" path="res://textures/legs.ase" id="4_pwin6"]
-[ext_resource type="SpriteFrames" uid="uid://b50lcqxv1lsky" path="res://legs.tres" id="5_pwin6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jqgh"]
 size = Vector2(7, 13)
@@ -32,15 +31,17 @@ shape = SubResource("RectangleShape2D_4jqgh")
 
 [node name="Sprites" type="Node2D" parent="."]
 
-[node name="Torso" type="Sprite2D" parent="Sprites"]
+[node name="Torso" parent="Sprites" instance=ExtResource("3_umiqe")]
 light_mask = 2
-texture = ExtResource("3_umiqe")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.68654794
 
 [node name="Legs" parent="Sprites" instance=ExtResource("4_pwin6")]
 light_mask = 2
-sprite_frames = ExtResource("5_pwin6")
-autoplay = "walk"
-frame_progress = 0.9298782
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.630998
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -28)
