@@ -8,6 +8,11 @@ var gravity = 400
 
 var last_damage_frame = 0.0
 
+var activation_distance = 128.0
+var deactivation_distance = 300.0
+
+var activated = false
+
 func move(delta,on_floor):
 	pass
 
@@ -20,8 +25,14 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x,0.0,friction)
 
 	move_and_slide()
-	move(delta,on_floor)
 	
+	var dist = position.distance_to(player.position)
+	if dist <= activation_distance:
+		activated = true
+	if activated && dist > deactivation_distance:
+		activated = false
+	if activated:
+		move(delta,on_floor)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player:
