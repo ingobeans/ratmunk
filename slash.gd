@@ -16,6 +16,5 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	body.health -= damage
-	body.active_stun = body.stun_time
+	body.damage(10.0)
 	body.velocity += (self.direction + Vector2(0.0,-0.5)) * 100.0

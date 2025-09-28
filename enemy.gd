@@ -4,11 +4,15 @@ extends CharacterBody2D
 
 var friction = 0.3
 var gravity = 400
+
 @onready var player = self.get_node("../Ratmunk")
+@onready var damage_flash = $Sprite/DamageFlash
 
 var last_damage_frame = 0.0
 
 var health = 20.0
+
+var last_damage = 0.0
 
 var activation_distance = 128.0
 var deactivation_distance = 300.0
@@ -22,8 +26,10 @@ func move(_delta,_on_floor):
 	pass
 
 func _physics_process(delta):
-	if health <= 0.0:
-		queue_free()
+	if last_damage > 0.0:
+		last_damage -= delta
+		
+	damage_flash.visible = last_damage > 0.75
 	
 	last_damage_frame -= delta
 	velocity.y += gravity * delta
@@ -43,13 +49,20 @@ func _physics_process(delta):
 		move(delta,on_floor)
 	active_stun -= delta
 
+func damage(amount:float):
+	health -= amount
+	last_damage = 1.0
+	active_stun = stun_time
+	if health <= 0.0:
+		queue_free()
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player:
 		# determine whether player is above us, and enemy should be destroyed,
 		# or if player should be damaged
 		if player.position.y < position.y and player.velocity.y > 0:
 			player.velocity.y = player.single_jump_force * 1.5
-			health -= 10.0
+			damage(10.0)
 		elif last_damage_frame <= 0.0:
 			player.health -= 10.0
 			last_damage_frame = 1.0
