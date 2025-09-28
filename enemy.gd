@@ -28,6 +28,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		# determine whether player is above us, and enemy should be destroyed,
 		# or if player should be damaged
 		if player.position.y < position.y and player.velocity.y > 0:
+			player.velocity.y = player.single_jump_force
 			self.queue_free()
 		elif last_damage_frame <= 0.0:
 			player.health -= 10.0
