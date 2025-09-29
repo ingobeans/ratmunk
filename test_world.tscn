@@ -1099,6 +1099,9 @@ position = Vector2(108, 0)
 [node name="Frog2" parent="." instance=ExtResource("4_dsnr4")]
 position = Vector2(606, -25)
 
+[node name="Frog6" parent="." instance=ExtResource("4_dsnr4")]
+position = Vector2(952, -128)
+
 [node name="Frog5" parent="." instance=ExtResource("4_dsnr4")]
 position = Vector2(689, -25)
 
